@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 
 const WordContext = React.createContext({
-  word: "",
+  words: [],
+  language: {},
   error: null,
   setError: () => {},
   clearError: () => {},
-  setWord: () => {}
+  setLanguage: () => {},
+  setWords: () => {}
 });
 
 export default WordContext;
 
 export class WordProvider extends Component {
   state = {
-    word: "",
+    words: [],
+    language: {},
     error: null
   };
   setError = error => {
@@ -22,17 +25,22 @@ export class WordProvider extends Component {
   clearError = () => {
     this.setState({ error: null });
   };
-  setWord = word => {
-    this.setState({ word });
+  setLanguage = language => {
+    this.setState({ language });
+  };
+  setWords = word => {
+    this.setState([...this.state.words, word]);
   };
 
   render() {
     const value = {
-      user: this.state.word,
+      words: this.state.words,
+      language: this.state.language,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
-      setWord: this.setWord
+      setLanguage: this.setLanguage,
+      setWords: this.setWords
     };
     return (
       <WordContext.Provider value={value}>
