@@ -1,0 +1,56 @@
+.RegForm__container {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.RegForm__label-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RegForm__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-links {
+  text-decoration: none;
+  color: green;
+  font-weight: 800;
+}
+
+.page-links:hover {
+  color: red;
+}
+.red-input:focus {
+  background-color: red;
+  color: white;
+  opacity: 50%;
+}
+.white-input:focus {
+  background-color: whitesmoke;
+  color: green;
+}
+.green-input:focus {
+  background-color: green;
+  color: white;
+  opacity: 50%;
+}
+
+@media (min-width: 425px) {
+  .RegForm__label-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

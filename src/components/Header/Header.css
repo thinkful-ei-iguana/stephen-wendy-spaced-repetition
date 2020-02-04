@@ -1,0 +1,145 @@
+.Header__App-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  padding: 100px 0;
+  /* overflow: hidden; */
+  background-image: linear-gradient(
+    90deg,
+    #006604,
+    #006604,
+    #009307,
+    #006604,
+    #007a05,
+    #007a05,
+    #ffffff,
+    #007a05,
+    #006604,
+    #007a05,
+    #006604,
+    #007a05,
+    #006604
+  );
+  background-size: 300%;
+  animation: flag 22s ease-in-out infinite normal;
+}
+
+@keyframes flag1 {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.spaced {
+  text-align: center;
+  letter-spacing: 1.4em;
+}
+.links {
+  color: white;
+  opacity: 0%;
+  animation: text 12s ease-in-out infinite normal;
+}
+.user-name {
+  /* margin: 20px 20px 20px; */
+}
+
+@keyframes text1 {
+  0% {
+    opacity: 15%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.spaced {
+  text-align: center;
+  letter-spacing: 1.2em;
+}
+.links,
+.user-links {
+  text-decoration: none;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.user-links:nth-last-of-type(2) {
+  margin-right: 10px;
+}
+
+.user-links {
+  text-decoration: none;
+  font-size: 1.1em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+  color: red;
+
+  /* width: 100px;
+  transition: width 1.35s;
+  -webkit-transition: width 1.35s;
+  overflow: hidden; */
+}
+
+.Header__logged-in,
+span {
+  margin-top: 10px;
+}
+
+.logout {
+  position: absolute;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+}
+.logout:hover::before,
+.logout:hover::after {
+  background-color: red;
+}
+.logout::before,
+.logout::after {
+  position: absolute;
+  content: " ";
+  height: 33px;
+  width: 4px;
+  background-color: green;
+}
+.logout::before {
+  transform: rotate(45deg);
+}
+.logout::after {
+  transform: rotate(-45deg);
+}
+
+.user-links:hover,
+.user-links:active,
+.Header__logged-in {
+  color: green;
+  font-weight: 900;
+}
+
+.user-links:hover,
+.user-links:active,
+.Header__not-logged-in {
+  color: green;
+  font-weight: 900;
+}

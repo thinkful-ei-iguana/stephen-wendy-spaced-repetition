@@ -1,0 +1,14 @@
+input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  height: 40px;
+}
+
+input:focus {
+  font-size: 20px;
+}
+
+label {
+  font-size: 16px;
+}
