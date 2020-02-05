@@ -15,7 +15,7 @@ export default WordContext;
 export class WordProvider extends Component {
   state = {
     words: [],
-    language: {},
+    language: [],
     error: null
   };
   setError = error => {

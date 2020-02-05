@@ -1,28 +1,31 @@
 import React, { Component } from "react";
 import WordContext from "../../contexts/WordContext";
-import Word from "../../components/Word/Word";
+import Flashcard from "../../components/Flashcard/Flashcard";
 
-class Words extends Component {
+class Flashcards extends Component {
   static contextType = WordContext;
 
   render() {
     const { words } = this.props;
+    console.log(words);
+
     return (
       <>
-        <ul>
-          {words.map(word => (
-            <Word
+        <p className="handwriting">
+          {/* {words.map(word => (
+            <Flashcard
               key={word.id}
               word={word.original}
               translation={word.translation}
               correct={word.correct_count}
               incorrect={word.incorrect_count}
             />
-          ))}
-        </ul>
+          ))} */}
+          {words.original}
+        </p>
       </>
     );
   }
 }
 
-export default Words;
+export default Flashcards;

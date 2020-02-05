@@ -69,7 +69,7 @@ class LoginForm extends Component {
         <footer className="RegForm__footer">
           <Button type="submit">Login</Button>Don't have an account?{" "}
           <Link to="/register" className="page-links">
-            Register!
+            Sign up!
           </Link>
         </footer>
       </form>

@@ -22,24 +22,24 @@
 
 .page-links {
   text-decoration: none;
-  color: green;
+  color: #41704c;
   font-weight: 800;
 }
 
 .page-links:hover {
-  color: red;
+  color: #ce253c;
 }
 .red-input:focus {
-  background-color: red;
+  background-color: #ce253c;
   color: white;
   opacity: 50%;
 }
 .white-input:focus {
   background-color: whitesmoke;
-  color: green;
+  color: #41704c;
 }
 .green-input:focus {
-  background-color: green;
+  background-color: #41704c;
   color: white;
   opacity: 50%;
 }

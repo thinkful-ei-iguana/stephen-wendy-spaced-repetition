@@ -1,0 +1,26 @@
+section,
+.Dashboard__headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Dash__titles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: auto;
+  grid-auto-rows: minmax(20px, auto);
+  text-decoration: underline;
+}
+
+@media (min-width: 425px) {
+  .Dash__titles {
+    grid-gap: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .Dash__titles {
+    grid-gap: 90px;
+  }
+}

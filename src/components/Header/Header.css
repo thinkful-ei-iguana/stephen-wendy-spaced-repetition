@@ -3,36 +3,34 @@
   text-transform: uppercase;
   letter-spacing: 0.4em;
   padding: 100px 0;
-  /* overflow: hidden; */
   background-image: linear-gradient(
     90deg,
-    #006604,
-    #006604,
-    #009307,
-    #006604,
-    #007a05,
-    #007a05,
-    #ffffff,
-    #007a05,
-    #006604,
-    #007a05,
-    #006604,
-    #007a05,
-    #006604
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c,
+    #76ce8a,
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c,
+    #41704c
   );
   background-size: 300%;
-  animation: flag 22s ease-in-out infinite normal;
+  animation: flag 1s ease-in;
+  animation-iteration-count: initial;
 }
 
-@keyframes flag1 {
+@keyframes flag {
   0% {
-    background-position: 100% 0%;
+    background-position: 100%;
   }
-  50% {
-    background-position: 0% 100%;
-  }
+
   100% {
-    background-position: 100% 0%;
+    background-position: 0%;
   }
 }
 
@@ -42,16 +40,17 @@
 }
 .links {
   color: white;
-  opacity: 0%;
-  animation: text 12s ease-in-out infinite normal;
+  opacity: 100%;
+  animation: text 3s ease-in;
+  animation-iteration-count: initial;
 }
 .user-name {
-  /* margin: 20px 20px 20px; */
+  padding: 0px 20px;
 }
 
-@keyframes text1 {
+@keyframes text {
   0% {
-    opacity: 15%;
+    opacity: 0%;
   }
   50% {
     opacity: 50%;
@@ -63,7 +62,7 @@
 
 .spaced {
   text-align: center;
-  letter-spacing: 1.2em;
+  letter-spacing: 1.3em;
 }
 .links,
 .user-links {
@@ -89,15 +88,9 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-
   padding: 0;
   margin: 0;
-  color: red;
-
-  /* width: 100px;
-  transition: width 1.35s;
-  -webkit-transition: width 1.35s;
-  overflow: hidden; */
+  color: #ce253c;
 }
 
 .Header__logged-in,
@@ -113,7 +106,7 @@ span {
 }
 .logout:hover::before,
 .logout:hover::after {
-  background-color: red;
+  background-color: #ce253c;
 }
 .logout::before,
 .logout::after {
@@ -121,7 +114,7 @@ span {
   content: " ";
   height: 33px;
   width: 4px;
-  background-color: green;
+  background-color: #41704c;
 }
 .logout::before {
   transform: rotate(45deg);
@@ -133,13 +126,23 @@ span {
 .user-links:hover,
 .user-links:active,
 .Header__logged-in {
-  color: green;
+  color: #41704c;
   font-weight: 900;
 }
 
 .user-links:hover,
 .user-links:active,
 .Header__not-logged-in {
-  color: green;
+  color: #41704c;
   font-weight: 900;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .Header__App-title {
+    padding: 60px 0;
+  }
 }
