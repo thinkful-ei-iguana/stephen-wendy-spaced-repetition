@@ -43,7 +43,9 @@ class LearningRoute extends Component {
       submitted: true
     })
     LanguageApiService.postGuess({ guess: guess.value })
-      .then(this.context.setGuess)
+      .then(res => {
+        this.context.setNext(res);
+      )
       .then(word => {
         guess.value = "";
       })
