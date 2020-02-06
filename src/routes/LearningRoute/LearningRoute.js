@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Input, Label } from "../../components/Form/Form";
-import Flashcard from "../../components/Flashcard/Flashcard";
-import Button from "../../components/Button/Button";
+
 import LanguageApiService from "../../services/language-api-service";
 import WordContext from "../../contexts/WordContext";
 import "./LearningRoute.css";
+import Flashcard from "../../components/Flashcard/Flashcard";
+import AnswerPopUp from "../../components/AnswerPopUp/AnswerPopUp"
+import { Input, Label } from "../../components/Form/Form";
+import Button from "../../components/Button/Button";
+
 class LearningRoute extends Component {
   static defaultProps = {
     history: {
@@ -18,7 +21,10 @@ class LearningRoute extends Component {
   //   history.push("/learn");
   // };
 
-  state = { error: null };
+  state = {
+    error: null,
+    submitted: false
+  };
 
   static contextType = WordContext;
 
@@ -33,7 +39,11 @@ class LearningRoute extends Component {
     ev.preventDefault();
     const { guess } = ev.target;
     console.log(guess.value);
+    this.setState({
+      submitted: true
+    })
     LanguageApiService.postGuess({ guess: guess.value })
+      .then(this.context.setGuess)
       .then(word => {
         guess.value = "";
       })
@@ -72,6 +82,8 @@ class LearningRoute extends Component {
     return (
       <section>
         {this.renderScores()}
+
+        {this.state.submitted && <AnswerPopUp />}
 
         <div className="Learning__Flashcard">
           {nextWord && this.renderFlashcard()}

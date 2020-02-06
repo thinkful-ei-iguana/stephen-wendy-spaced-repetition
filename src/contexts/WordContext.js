@@ -17,7 +17,9 @@ export class WordProvider extends Component {
   state = {
     words: [],
     language: {},
+    prevWord: {},
     nextWord: {},
+    guess: '',
     error: null
   };
   setError = error => {
@@ -28,7 +30,8 @@ export class WordProvider extends Component {
     this.setState({ error: null });
   };
   setNext = nextWord => {
-    this.setState({ nextWord });
+    this.setState(
+      { nextWord });
   };
   setLanguage = language => {
     this.setState({ language });
@@ -36,6 +39,9 @@ export class WordProvider extends Component {
   setWords = word => {
     this.setState([...this.state.words, word]);
   };
+  setGuess = word => {
+    this.setState({ guess: word });
+  }
 
   render() {
     const value = {
