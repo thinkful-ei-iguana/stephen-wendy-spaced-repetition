@@ -3,6 +3,7 @@ import React, { Component } from "react";
 const WordContext = React.createContext({
   words: [],
   language: {},
+  nextWord: {},
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -15,7 +16,8 @@ export default WordContext;
 export class WordProvider extends Component {
   state = {
     words: [],
-    language: [],
+    language: {},
+    nextWord: {},
     error: null
   };
   setError = error => {
@@ -24,6 +26,9 @@ export class WordProvider extends Component {
   };
   clearError = () => {
     this.setState({ error: null });
+  };
+  setNext = nextWord => {
+    this.setState({ nextWord });
   };
   setLanguage = language => {
     this.setState({ language });
@@ -36,9 +41,11 @@ export class WordProvider extends Component {
     const value = {
       words: this.state.words,
       language: this.state.language,
+      nextWord: this.state.nextWord,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
+      setNext: this.setNext,
       setLanguage: this.setLanguage,
       setWords: this.setWords
     };

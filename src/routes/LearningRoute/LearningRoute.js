@@ -1,62 +1,97 @@
 import React, { Component } from "react";
-import Flashcards from "../../components/Flashcards/Flashcards";
+import { Input, Label } from "../../components/Form/Form";
+import Flashcard from "../../components/Flashcard/Flashcard";
 import Button from "../../components/Button/Button";
 import LanguageApiService from "../../services/language-api-service";
 import WordContext from "../../contexts/WordContext";
 import "./LearningRoute.css";
 class LearningRoute extends Component {
   static defaultProps = {
+    history: {
+      push: () => {}
+    },
     words: []
   };
-  state = {
-    guess: ""
+
+  handleResult = () => {
+    const { history } = this.props;
+    history.push("/learn/result");
   };
+
+  state = { error: null };
+
   static contextType = WordContext;
 
   componentWillMount() {
     this.context.clearError();
-    LanguageApiService.getLanguage()
-      .then(this.context.setLanguage)
+    LanguageApiService.getHead()
+      .then(this.context.setNext)
       .catch(this.context.setError);
   }
 
-  handleGuessSubmit(e) {
-    
-  }
+  handleGuessSubmit = ev => {
+    ev.preventDefault();
+    const { guess } = ev.target;
 
-  renderFlashcards() {
-    const { language } = this.context;
+    LanguageApiService.postGuess({ guess: guess.value })
+      .then(word => {
+        guess.value = "";
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
+
+  renderScores() {
+    const { nextWord } = this.context;
     return (
-      <div>
-        <Flashcards words={language.words[0]} />
-      </div>
+      <>
+        <h3 className="Learning__Total">Total Score: {nextWord.totalScore}</h3>
+        <div className="Learning__score">
+          <h4 className="green-text">Correct: {nextWord.wordCorrectCount}</h4>
+          <h4 className="red-text">Incorrect: {nextWord.wordIncorrectCount}</h4>
+        </div>
+      </>
     );
   }
 
-  handleChange(event) {
-    this.setState({ guess: event.target.value });
+  renderFlashcard() {
+    const { nextWord } = this.context;
+    return (
+      <div>
+        <Flashcard word={nextWord} />
+      </div>
+    );
   }
+  //need componentdidupdate
 
   render() {
-    const { language } = this.context;
+    const { nextWord } = this.context;
+    const { error } = this.state;
+
     return (
       <section>
-        <h4>Translate the word:</h4>
+        {this.renderScores()}
 
         <div className="Learning__Flashcard">
-          {language.words && this.renderFlashcards()}
+          {nextWord && this.renderFlashcard()}
         </div>
-        <div className="Learning__Form">
-          <form>
-            <input
-              type="text"
-              name="guess"
-              value={this.state.guess}
-              onChange={() => this.handleChange()}
-            />
-            <Button type="submit">Check Word</Button>
-          </form>
-        </div>
+        <form className="Learning__Form" onSubmit={this.handleGuessSubmit}>
+          <div role="alert">{error && <p>Something went wrong.{error}</p>}</div>
+
+          <Label htmlFor="learn-guess-input">Translate the word above</Label>
+          <Input
+            id="learn-guess-input"
+            type="text"
+            name="guess"
+            className="Learning__guess-input"
+            required
+          />
+
+          <Button type="submit" onClick={this.handleResult}>
+            Check Word
+          </Button>
+        </form>
       </section>
     );
   }

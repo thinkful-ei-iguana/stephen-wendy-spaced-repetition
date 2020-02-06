@@ -1,19 +1,6 @@
 import React, { Component } from "react";
 import "./Word.css";
 class Word extends Component {
-  createCorrectTally = () => {
-    const { correct } = this.props;
-
-    let table = [];
-    for (let i = 1; i <= correct; i++) {
-      table.push(
-        <span key={i} className="tally1">
-          |
-        </span>
-      );
-    }
-    return table;
-  };
   formatCorrectScore() {
     const { correct, word } = this.props;
     if (correct === 0) {

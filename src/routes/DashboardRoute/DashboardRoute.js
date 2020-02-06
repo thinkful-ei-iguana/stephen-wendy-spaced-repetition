@@ -56,7 +56,7 @@ class DashboardRoute extends Component {
                   "Your total score is" + language.language.total_score
                 }
               >
-                Total score: {language.language.total_score}
+                Total correct answers: {language.language.total_score}
               </h3>
             )}
           </div>
@@ -70,15 +70,15 @@ class DashboardRoute extends Component {
           </Button>
 
           <Link to="/learn">
-            <Button type="submit">Start practicing</Button>
+            <Button type="submit">Start Practicing</Button>
           </Link>
         </div>
         {expanded && (
-          <h4 className="Dash__titles">
-            <div>Words</div>
+          <h3 className="Dash__titles">
+            <div>Words to practice</div>
             <div># Correct</div>
             <div># Incorrect</div>
-          </h4>
+          </h3>
         )}
         {expanded && this.renderWordList()}
       </section>

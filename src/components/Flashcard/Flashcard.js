@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import WordContext from "../../contexts/WordContext";
 
 class Flashcard extends Component {
+  static contextType = WordContext;
+
   render() {
     const { word } = this.props;
+    console.log(this.props);
+
     return (
-      <div className="Word__word-container">
-        <li aria-label={word} tabIndex="0" className="Word__word">
-          {word}
-        </li>
-      </div>
+      <>
+        <p className="handwriting">{word.nextWord}</p>
+      </>
     );
   }
 }

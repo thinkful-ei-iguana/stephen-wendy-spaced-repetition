@@ -50,10 +50,10 @@ class Header extends Component {
   render() {
     return (
       <>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
         <header>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
           <h1 className="Header__App-title">
             <Link to="/" className="links" aria-label="Link to dashboard">
               <span className="spaced">Spaced</span> repetition

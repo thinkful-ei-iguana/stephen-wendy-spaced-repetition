@@ -9,19 +9,6 @@ li {
   grid-auto-rows: minmax(20px, auto);
   font-size: 14px;
 }
-.Word__word {
-}
-
-.Word__correct {
-}
-.Word__incorrect {
-}
-
-.tally {
-  width: 4px;
-  height: 10px;
-  background-color: #ce253c;
-}
 
 @media (min-width: 425px) {
   .Word__word-container {
