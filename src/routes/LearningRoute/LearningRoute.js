@@ -20,6 +20,10 @@ class LearningRoute extends Component {
       .catch(this.context.setError);
   }
 
+  handleGuessSubmit(e) {
+    
+  }
+
   renderFlashcards() {
     const { language } = this.context;
     return (
