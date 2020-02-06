@@ -13,10 +13,10 @@ class LearningRoute extends Component {
     words: []
   };
 
-  handleResult = () => {
-    const { history } = this.props;
-    history.push("/learn/result");
-  };
+  // handleResult = () => {
+  //   const { history } = this.props;
+  //   history.push("/learn");
+  // };
 
   state = { error: null };
 
@@ -32,7 +32,7 @@ class LearningRoute extends Component {
   handleGuessSubmit = ev => {
     ev.preventDefault();
     const { guess } = ev.target;
-
+    console.log(guess.value);
     LanguageApiService.postGuess({ guess: guess.value })
       .then(word => {
         guess.value = "";
@@ -88,7 +88,10 @@ class LearningRoute extends Component {
             required
           />
 
-          <Button type="submit" onClick={this.handleResult}>
+          <Button
+            type="submit"
+            //  onClick={this.handleResult}
+          >
             Check Word
           </Button>
         </form>
