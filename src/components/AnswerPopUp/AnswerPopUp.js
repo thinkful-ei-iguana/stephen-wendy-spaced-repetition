@@ -38,7 +38,7 @@ class AnswerPopUp extends Component {
 
     return (
       <div className="AnswerPopUp__incorrect">
-        <h3 className="AnswerPopUp__subtitle">Good try but not quite right</h3>
+        <h3 className="AnswerPopUp__subtitle">Good try but not quite right :(</h3>
 
         <p className="AnswerPopUp__text">The correct translation for {prevWord.original} was {nextWord.translation} and you chose {guess}</p>
 
