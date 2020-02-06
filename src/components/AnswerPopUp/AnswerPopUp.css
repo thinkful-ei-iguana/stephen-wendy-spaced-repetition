@@ -1,0 +1,16 @@
+.AnswerPopUp {
+  position: fixed;
+  top: 75px;
+  z-index: 2;
+  text-align: center;
+  background-color: white;
+  border: 1px solid rgb(0,0,0);
+  width: 350px;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .AnswerPopUp {
+    top: 250px;
+  }
+}

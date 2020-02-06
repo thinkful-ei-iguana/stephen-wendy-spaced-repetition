@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import LanguageApiService from "../../services/language-api-service";
 import WordContext from "../../contexts/WordContext";
 import Button from "../Button/Button";
+import "./AnswerPopUp.css";
 
 class AnswerPopUp extends Component {
   state = {
@@ -24,11 +25,11 @@ class AnswerPopUp extends Component {
       <div className="AnswerPopUp__correct">
         <h3 className="AnswerPopUp__subtitle">You were correct! :D</h3>
 
-        <p className="AnswerPopUp__text">The correct translation for {prevWord.original} was {nextWord.translation} and you chose {guess}</p>
+        <p className="AnswerPopUp__text">The correct translation for {prevWord} was {nextWord.translation} and you chose {guess}</p>
 
         <p className="AnswerPopUp__score">Your total score is: {nextWord.totalScore}</p>
 
-        <Button>Try another word!</Button>
+        <Button className="AnswerPopUp__button">Try another word!</Button>
       </div>
     )
   }
@@ -40,7 +41,7 @@ class AnswerPopUp extends Component {
       <div className="AnswerPopUp__incorrect">
         <h3 className="AnswerPopUp__subtitle">Good try but not quite right :(</h3>
 
-        <p className="AnswerPopUp__text">The correct translation for {prevWord.original} was {nextWord.translation} and you chose {guess}</p>
+        <p className="AnswerPopUp__text">The correct translation for {prevWord} was {nextWord.translation} and you chose {guess}</p>
 
         <p className="AnswerPopUp__score">Your total score is: {nextWord.totalScore}</p>
 
@@ -53,7 +54,7 @@ class AnswerPopUp extends Component {
     const { nextWord } = this.context;
     return (
       <div className="AnswerPopUp">
-        {nextWord.isCorrect ? this.renderCorrect : this.renderIncorrect}
+        {nextWord.isCorrect ? this.renderCorrect() : this.renderIncorrect()}
       </div>
     );
   }

@@ -4,11 +4,13 @@ const WordContext = React.createContext({
   words: [],
   language: {},
   nextWord: {},
+  prevWord: '',
   error: null,
   setError: () => {},
   clearError: () => {},
   setLanguage: () => {},
-  setWords: () => {}
+  setWords: () => {},
+  setPrev: () => {}
 });
 
 export default WordContext;
@@ -18,10 +20,8 @@ export class WordProvider extends Component {
     words: [],
     language: {},
     nextWord: {},
-    prevWord: '',
-    guess: '',
     error: null
-  };
+  }
   setError = error => {
     console.error(error);
     this.setState({ error });
@@ -39,13 +39,8 @@ export class WordProvider extends Component {
   setWords = word => {
     this.setState([...this.state.words, word]);
   };
-  setPrevWord = () => {
-    this.setState({
-      prevWord: this.state.nextWord.original
-    });
-  };
-  setGuess = guess => {
-    this.setState({ guess });
+  setPrev = () => {
+    this.setState({ prevWord: this.state.nextWord.original })
   };
 
   render() {
@@ -53,12 +48,15 @@ export class WordProvider extends Component {
       words: this.state.words,
       language: this.state.language,
       nextWord: this.state.nextWord,
+      prevWord: this.state.prevWord,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setNext: this.setNext,
       setLanguage: this.setLanguage,
-      setWords: this.setWords
+      setWords: this.setWords,
+      setPrev: this.setPrev,
+      setGuess: this.setGuess
     };
     return (
       <WordContext.Provider value={value}>

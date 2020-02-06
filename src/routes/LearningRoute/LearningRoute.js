@@ -23,7 +23,8 @@ class LearningRoute extends Component {
 
   state = {
     error: null,
-    submitted: false
+    submitted: false,
+    guess: ''
   };
 
   static contextType = WordContext;
@@ -35,17 +36,23 @@ class LearningRoute extends Component {
       .catch(this.context.setError);
   }
 
+  handleGuess = ev => {
+    this.setState({
+      guess: ev.target.value
+    });
+  }
+
   handleGuessSubmit = ev => {
     ev.preventDefault();
-    const { guess } = ev.target;
-    console.log(guess.value);
+    const guess = this.state.guess;
+    this.context.setPrev();
     this.setState({
       submitted: true
     })
     LanguageApiService.postGuess({ guess: guess.value })
       .then(res => {
         this.context.setNext(res);
-      )
+      })
       .then(word => {
         guess.value = "";
       })
@@ -99,13 +106,11 @@ class LearningRoute extends Component {
             type="text"
             name="guess"
             className="Learning__guess-input"
+            onChange={ev => this.handleGuess(ev)}
             required
           />
 
-          <Button
-            type="submit"
-            //  onClick={this.handleResult}
-          >
+          <Button type="submit">
             Check Word
           </Button>
         </form>
