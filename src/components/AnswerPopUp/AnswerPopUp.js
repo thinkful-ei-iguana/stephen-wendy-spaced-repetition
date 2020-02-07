@@ -26,13 +26,10 @@ class AnswerPopUp extends Component {
         <h3 className="AnswerPopUp__subtitle">You were correct! :D</h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for {prevWord} was {nextWord.translation} and
-          you chose {guess}.
+          The correct translation for fejileszto is developer!
         </p>
 
-        <p className="AnswerPopUp__score">
-          Your total score is: {nextWord.totalScore}
-        </p>
+        <p className="AnswerPopUp__score">Your total score is: 999</p>
 
         <Button className="AnswerPopUp__button">Try another word!</Button>
       </div>
@@ -49,13 +46,11 @@ class AnswerPopUp extends Component {
         </h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for {prevWord} was {nextWord.translation} and
-          you chose {guess}
+          The correct translation for szoftver is software and you chose
+          softbear.
         </p>
 
-        <p className="AnswerPopUp__score">
-          Your total score is: {nextWord.totalScore}
-        </p>
+        <p className="AnswerPopUp__score">Your total score is: 999</p>
 
         <Button>Next word!</Button>
       </div>

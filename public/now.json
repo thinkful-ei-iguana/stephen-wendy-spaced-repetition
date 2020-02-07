@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "spacedbox-app",
+  "alias": "spacedbox",
+  "routes": [{ "handle": "filesystem" }, { "src": ".*", "dest": "/index.html" }]
+}
