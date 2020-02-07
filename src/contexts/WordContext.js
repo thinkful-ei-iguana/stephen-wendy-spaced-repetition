@@ -4,12 +4,14 @@ const WordContext = React.createContext({
   words: [],
   language: {},
   nextWord: {},
-  prevWord: '',
+  prevWord: "",
   error: null,
+  responseObj: {},
   setError: () => {},
   clearError: () => {},
   setLanguage: () => {},
   setWords: () => {},
+  setGuess: () => {},
   setPrev: () => {}
 });
 
@@ -20,8 +22,19 @@ export class WordProvider extends Component {
     words: [],
     language: {},
     nextWord: {},
+    responseObj: {
+      nextWord: "",
+      totalScore: 0,
+      wordCorrectCount: 0,
+      wordIncorrectCount: 0,
+      answer: "",
+      isCorrect: false,
+      guess: "",
+      setGuess: () => {}
+    },
     error: null
-  }
+  };
+
   setError = error => {
     console.error(error);
     this.setState({ error });
@@ -30,8 +43,7 @@ export class WordProvider extends Component {
     this.setState({ error: null });
   };
   setNext = nextWord => {
-    this.setState(
-      { nextWord });
+    this.setState({ nextWord });
   };
   setLanguage = language => {
     this.setState({ language });
@@ -39,8 +51,12 @@ export class WordProvider extends Component {
   setWords = word => {
     this.setState([...this.state.words, word]);
   };
+  setGuess = guess => {
+    this.setState({ guess });
+  };
+
   setPrev = () => {
-    this.setState({ prevWord: this.state.nextWord.original })
+    this.setState({ prevWord: this.state.nextWord.original });
   };
 
   render() {
@@ -58,6 +74,7 @@ export class WordProvider extends Component {
       setPrev: this.setPrev,
       setGuess: this.setGuess
     };
+
     return (
       <WordContext.Provider value={value}>
         {this.props.children}

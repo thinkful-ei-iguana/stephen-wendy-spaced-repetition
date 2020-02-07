@@ -56,7 +56,7 @@ class Header extends Component {
             : this.renderLoginLink()}
           <h1 className="Header__App-title">
             <Link to="/" className="links" aria-label="Link to dashboard">
-              <span className="spaced">Spaced</span> repetition
+              <span className="spaced">Spaced</span> box
             </Link>
           </h1>
         </header>

@@ -15,70 +15,65 @@ describe(`User story: Presented with word`, function() {
   beforeEach(() => {
     cy.server()
       .route({
-        method: 'GET',
+        method: "GET",
         url: `/api/language/head`,
         status: 200,
-        response: 'fixture:language-head.json',
+        response: "fixture:language-head.json"
       })
-      .as('languageHeadRequest')
-  })
+      .as("languageHeadRequest");
+  });
 
-  it('displays the current score and h2 with next word', () => {
+  it("displays the a flashcard with the next word", () => {
     cy.login()
       .visit(`/learn`)
-      .wait('@languageHeadRequest')
+      .wait("@languageHeadRequest");
 
-    cy.fixture('language-head.json')
-      .then(languageHeadFixture => {
-        cy.get('main').within($main => {
-          cy.get('h2')
-            .should('have.text', 'Translate the word:')
-            .siblings('span')
-            .should('have.text', languageHeadFixture.nextWord)
-        })
-        cy.get('p').eq(0)
-          .should(
-            'have.text',
-            `Your total score is: ${languageHeadFixture.totalScore}`,
-          )
-      })
-  })
+    cy.fixture("language-head.json").then(languageHeadFixture => {
+      cy.get("section").within($section => {
+        cy.get("div.Learning__Flashcard").should(
+          "have.text",
+          languageHeadFixture.nextWord
+        );
+      });
+    });
+  });
 
   it(`displays a form for submitting the next guess`, () => {
     cy.login()
       .visit(`/learn`)
-      .wait('@languageHeadRequest')
+      .wait("@languageHeadRequest");
 
-    cy.get('main form').within($form => {
-      cy.get('label[for=learn-guess-input]')
-        .should('have.text', `What's the translation for this word?`)
+    cy.get("main form").within($form => {
+      cy.get("label[for=learn-guess-input]").should(
+        "have.text",
+        `Translate the word above`
+      );
 
-      cy.get('input#learn-guess-input')
-        .should('have.attr', 'type', 'text')
-        .and('have.attr', 'required', 'required')
+      cy.get("input#learn-guess-input")
+        .should("have.attr", "type", "text")
+        .and("have.attr", "required", "required");
 
-      cy.get('button[type=submit]')
-        .should('have.text', 'Submit your answer')
-    })
-  })
+      cy.get("button[type=submit]").should("have.text", "Check Word");
+    });
+  });
 
-  it(`displays the correct and incorrect count for this word`, () => {
+  it(`displays the Total Score and correct and incorrect count for this word`, () => {
     cy.login()
       .visit(`/learn`)
-      .wait('@languageHeadRequest')
+      .wait("@languageHeadRequest");
 
-    cy.fixture('language-head.json').then(languageHeadFixture => {
-      cy.get('main').within($main => {
-        cy.root()
-          .should(
-            'contain',
-            `You have answered this word correctly ${languageHeadFixture.wordCorrectCount} times.`,
-          )
-          .and(
-            'contain',
-            `You have answered this word incorrectly ${languageHeadFixture.wordIncorrectCount} times.`,
-          )
-      })
-    })
-  })
-})
+    cy.fixture("language-head.json").then(languageHeadFixture => {
+      cy.get("h3.Learning__Total").should(
+        "have.text",
+        `Total Score: ${languageHeadFixture.totalScore}`
+      );
+      cy.get("div.Learning__score").within($main => {
+        cy.get("h4").should(
+          "contain",
+          `Correct: ${languageHeadFixture.wordCorrectCount}`,
+          `Incorrect: ${languageHeadFixture.wordIncorrectCount} `
+        );
+      });
+    });
+  });
+});

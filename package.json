@@ -18,6 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "REACT_APP_API_ENDPOINT=https://...herokuapp.com/api npm run build",
+    "deploy": "now --prod ./build",
+    "postdeploy": "now alias -A ./build/now.json",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
