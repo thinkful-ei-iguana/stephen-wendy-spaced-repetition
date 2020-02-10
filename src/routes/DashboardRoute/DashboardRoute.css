@@ -11,6 +11,25 @@ section,
   grid-gap: auto;
   grid-auto-rows: minmax(20px, auto);
   text-decoration: underline;
+  font-size: 16px;
+}
+
+.Dashboard__word-container {
+  padding-left: 20px;
+  background-image: linear-gradient(
+    180deg,
+    #41704c 1.61%,
+    #fffade 1.61%,
+    #fffade 50%,
+    #41704c 50%,
+    #41704c 51.61%,
+    #fffade 51.61%,
+    #fffade 100%
+  );
+  background-size: 62px 62px;
+  box-shadow: 10px 10px 10px #888888;
+  font-family: "Permanent Marker", cursive;
+  font-size: 22px;
 }
 
 @media (min-width: 425px) {
@@ -21,6 +40,14 @@ section,
 
 @media (min-width: 768px) {
   .Dash__titles {
-    grid-gap: 90px;
+    grid-gap: 60px;
+  }
+}
+@media (min-width: 1024px) {
+  .Dash__titles {
+    font-size: 22px;
+  }
+  .Dashboard__word-container {
+    padding-left: 60px;
   }
 }

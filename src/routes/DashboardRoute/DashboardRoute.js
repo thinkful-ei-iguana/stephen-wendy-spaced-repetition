@@ -73,14 +73,16 @@ class DashboardRoute extends Component {
             <Button type="submit">Start Practicing</Button>
           </Link>
         </div>
-        {expanded && (
-          <h3 className="Dash__titles">
-            <div>Words to practice</div>
-            <div># Correct</div>
-            <div># Incorrect</div>
-          </h3>
-        )}
-        {expanded && this.renderWordList()}
+        <div className="Dashboard__word-container">
+          {expanded && (
+            <h3 className="Dash__titles">
+              <div>Words to practice</div>
+              <div># Correct</div>
+              <div># Incorrect</div>
+            </h3>
+          )}
+          {expanded && this.renderWordList()}
+        </div>
       </section>
     );
   }
