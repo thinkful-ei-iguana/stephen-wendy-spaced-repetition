@@ -23,13 +23,13 @@ class LearningRoute extends Component {
 
   state = {
     error: null,
-    submitted: false,
-    guess: ""
+    guess: "",
+    submitted: false
   };
 
   static contextType = WordContext;
 
-  componentWillMount() {
+  componentDidMount() {
     this.context.clearError();
     LanguageApiService.getHead()
       .then(this.context.setNext)
@@ -44,21 +44,18 @@ class LearningRoute extends Component {
 
   handleGuessSubmit = ev => {
     ev.preventDefault();
-    const guess = this.state.guess;
-    // this.context.setPrev();
+    const guess = this.state.guess.toLowerCase();
+    this.context.setGuess(guess);
+
+    LanguageApiService.postGuess(guess)
+      .then(response => {
+        this.context.setResponseObj(response);
+      })
+      .catch(this.context.setError);
+
     this.setState({
       submitted: true
     });
-    LanguageApiService.postGuess({ guess: guess.value })
-      .then(res => {
-        this.context.setNext(res);
-      })
-      .then(word => {
-        guess.value = "";
-      })
-      .catch(res => {
-        this.setState({ error: res.error });
-      });
   };
 
   renderScores() {
@@ -75,16 +72,17 @@ class LearningRoute extends Component {
   }
 
   renderFlashcard() {
-    const { nextWord } = this.context;
+    const { nextWord, responseObj } = this.context;
     return (
       <div>
-        <Flashcard word={nextWord} />
+        <Flashcard word={nextWord} response={responseObj} />
       </div>
     );
   }
 
+  renderResults() {}
+
   render() {
-    const { nextWord } = this.context;
     const { error } = this.state;
 
     return (
@@ -93,11 +91,11 @@ class LearningRoute extends Component {
 
         {/* {this.state.submitted && <AnswerPopUp />} */}
 
-        <div className="Learning__Flashcard">
-          {nextWord && this.renderFlashcard()}
-        </div>
+        <div className="Learning__Flashcard">{this.renderFlashcard()}</div>
         <form className="Learning__Form" onSubmit={this.handleGuessSubmit}>
-          <div role="alert">{error && <p>Something went wrong.{error}</p>}</div>
+          <div role="alert">
+            {error && <p>Something went wrong. {error}</p>}
+          </div>
 
           <Label htmlFor="learn-guess-input">Translate the word above</Label>
           <Input
