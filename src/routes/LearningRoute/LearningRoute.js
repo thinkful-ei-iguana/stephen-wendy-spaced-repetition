@@ -44,8 +44,10 @@ class LearningRoute extends Component {
 
   handleGuessSubmit = ev => {
     ev.preventDefault();
+    const prevWord = this.context.nextWord.original;
     const guess = this.state.guess;
-    // this.context.setPrev();
+    this.context.setPrev(prevWord);
+    console.log(prevWord);
     this.setState({
       submitted: true
     });
@@ -60,6 +62,10 @@ class LearningRoute extends Component {
         this.setState({ error: res.error });
       });
   };
+
+  handleNext() {
+    this.setState({ submitted: false });
+  }
 
   renderScores() {
     const { nextWord } = this.context;
@@ -91,7 +97,7 @@ class LearningRoute extends Component {
       <section>
         {this.renderScores()}
 
-        {/* {this.state.submitted && <AnswerPopUp />} */}
+        {this.state.submitted && <AnswerPopUp handleNext={this.handleNext} />}
 
         <div className="Learning__Flashcard">
           {nextWord && this.renderFlashcard()}

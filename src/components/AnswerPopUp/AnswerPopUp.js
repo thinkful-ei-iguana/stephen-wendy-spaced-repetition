@@ -11,13 +11,6 @@ class AnswerPopUp extends Component {
 
   static contextType = WordContext;
 
-  // componentWillMount() {
-  //   this.context.clearError();
-  //   LanguageApiService.postGuess()
-  //     .then(this.context.setNext)
-  //     .catch(this.context.setError);
-  // }
-
   renderCorrect() {
     const { prevWord, nextWord, guess } = this.context;
 
@@ -26,12 +19,12 @@ class AnswerPopUp extends Component {
         <h3 className="AnswerPopUp__subtitle">You were correct! :D</h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for fejileszto is developer!
+          The correct translation for {prevWord} is {nextWord.translation}!
         </p>
 
-        <p className="AnswerPopUp__score">Your total score is: 999</p>
+        <p className="AnswerPopUp__score">Your total score is: {nextWord.total_score}</p>
 
-        <Button className="AnswerPopUp__button">Try another word!</Button>
+        <Button className="AnswerPopUp__button" onClick={() => this.props.handleNext}>Try another word!</Button>
       </div>
     );
   }

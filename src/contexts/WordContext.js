@@ -24,6 +24,7 @@ export class WordProvider extends Component {
     nextWord: {},
     responseObj: {
       nextWord: "",
+      prevWord: "",
       totalScore: 0,
       wordCorrectCount: 0,
       wordIncorrectCount: 0,
@@ -55,8 +56,8 @@ export class WordProvider extends Component {
     this.setState({ guess });
   };
 
-  setPrev = () => {
-    this.setState({ prevWord: this.state.nextWord.original });
+  setPrev = (word) => {
+    this.setState({ prevWord: word });
   };
 
   render() {
