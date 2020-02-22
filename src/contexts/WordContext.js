@@ -4,15 +4,16 @@ const WordContext = React.createContext({
   words: [],
   language: {},
   nextWord: {},
-  prevWord: "",
-  error: null,
+  guess: "",
   responseObj: {},
+  error: null,
   setError: () => {},
   clearError: () => {},
+  setNext: () => {},
   setLanguage: () => {},
+  setResponseObj: () => {},
   setWords: () => {},
-  setGuess: () => {},
-  setPrev: () => {}
+  setGuess: () => {}
 });
 
 export default WordContext;
@@ -22,6 +23,7 @@ export class WordProvider extends Component {
     words: [],
     language: {},
     nextWord: {},
+<<<<<<< HEAD
     responseObj: {
       nextWord: "",
       prevWord: "",
@@ -33,6 +35,10 @@ export class WordProvider extends Component {
       guess: "",
       setGuess: () => {}
     },
+=======
+    guess: "",
+    responseObj: {},
+>>>>>>> be94063bf9296a039c905aa8a78af2ca8d4a5f1d
     error: null
   };
 
@@ -46,6 +52,9 @@ export class WordProvider extends Component {
   setNext = nextWord => {
     this.setState({ nextWord });
   };
+  setResponseObj = responseObj => {
+    this.setState({ responseObj });
+  };
   setLanguage = language => {
     this.setState({ language });
   };
@@ -56,24 +65,32 @@ export class WordProvider extends Component {
     this.setState({ guess });
   };
 
+<<<<<<< HEAD
   setPrev = (word) => {
     this.setState({ prevWord: word });
   };
+=======
+  // setPrev = () => {
+  //   this.setState({ prevWord: this.state.nextWord.original });
+  // };
+>>>>>>> be94063bf9296a039c905aa8a78af2ca8d4a5f1d
 
   render() {
     const value = {
       words: this.state.words,
       language: this.state.language,
       nextWord: this.state.nextWord,
-      prevWord: this.state.prevWord,
+      guess: this.state.guess,
+      responseObj: this.state.responseObj,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setNext: this.setNext,
+      setResponseObj: this.setResponseObj,
       setLanguage: this.setLanguage,
       setWords: this.setWords,
-      setPrev: this.setPrev,
       setGuess: this.setGuess
+      // setPrev: this.setPrev
     };
 
     return (
