@@ -39,8 +39,8 @@ class AnswerPopUp extends Component {
         </h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for szoftver is software and you chose
-          softbear.
+          The correct translation for {prevWord} is {nextWord.original} and you chose
+          {guess}.
         </p>
 
         <p className="AnswerPopUp__score">Your total score is: 999</p>
