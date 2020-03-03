@@ -44,9 +44,9 @@ class LearningRoute extends Component {
 
   handleGuessSubmit = ev => {
     ev.preventDefault();
-<<<<<<< HEAD
+
     const prevWord = this.context.nextWord.original;
-   
+
     const guess = this.state.guess.toLowerCase();
     this.context.setGuess(guess);
 

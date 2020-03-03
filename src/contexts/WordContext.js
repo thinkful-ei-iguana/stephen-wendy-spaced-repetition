@@ -23,7 +23,6 @@ export class WordProvider extends Component {
     words: [],
     language: {},
     nextWord: {},
-<<<<<<< HEAD
     responseObj: {
       nextWord: "",
       prevWord: "",
@@ -35,10 +34,6 @@ export class WordProvider extends Component {
       guess: "",
       setGuess: () => {}
     },
-=======
-    guess: "",
-    responseObj: {},
->>>>>>> be94063bf9296a039c905aa8a78af2ca8d4a5f1d
     error: null
   };
 
@@ -65,15 +60,9 @@ export class WordProvider extends Component {
     this.setState({ guess });
   };
 
-<<<<<<< HEAD
-  setPrev = (word) => {
+  setPrev = word => {
     this.setState({ prevWord: word });
   };
-=======
-  // setPrev = () => {
-  //   this.setState({ prevWord: this.state.nextWord.original });
-  // };
->>>>>>> be94063bf9296a039c905aa8a78af2ca8d4a5f1d
 
   render() {
     const value = {
