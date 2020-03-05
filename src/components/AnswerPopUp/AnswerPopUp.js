@@ -12,7 +12,7 @@ class AnswerPopUp extends Component {
   static contextType = WordContext;
 
   renderCorrect() {
-    const { prevWord, nextWord, guess } = this.context;
+    const { prevWord, nextWord } = this.context;
 
     return (
       <div className="AnswerPopUp__correct">
@@ -39,7 +39,7 @@ class AnswerPopUp extends Component {
         </h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for {prevWord} is {nextWord.original} and you chose
+          The correct translation for {prevWord} is {nextWord.translation} and you chose
           {guess}.
         </p>
 
