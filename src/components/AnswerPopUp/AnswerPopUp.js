@@ -12,17 +12,17 @@ class AnswerPopUp extends Component {
   static contextType = WordContext;
 
   renderCorrect() {
-    const { prevWord, nextWord, guess } = this.context;
+    const { nextWord, responseObj } = this.context;
 
     return (
       <div className="AnswerPopUp__correct">
         <h3 className="AnswerPopUp__subtitle">You were correct! :D</h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for {prevWord} is {nextWord.translation}!
+          The correct translation for {nextWord.nextWord} is {responseObj.answer}!
         </p>
 
-        <p className="AnswerPopUp__score">Your total score is: {nextWord.total_score}</p>
+        <p className="DisplayScore">Your total score is: {responseObj.totalScore}</p>
 
         <Button className="AnswerPopUp__button" onClick={() => this.props.handleNext}>Try another word!</Button>
       </div>
@@ -30,7 +30,7 @@ class AnswerPopUp extends Component {
   }
 
   renderIncorrect() {
-    const { prevWord, nextWord, guess } = this.context;
+    const { nextWord, responseObj } = this.context;
 
     return (
       <div className="AnswerPopUp__incorrect">
@@ -39,11 +39,10 @@ class AnswerPopUp extends Component {
         </h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for szoftver is software and you chose
-          softbear.
+          The correct translation for {nextWord.nextWord} is {responseObj.translation} and you chose {this.props.guess}.
         </p>
 
-        <p className="AnswerPopUp__score">Your total score is: 999</p>
+        <p className="AnswerPopUp__score">Your total score is: {responseObj.totalScore}</p>
 
         <Button>Next word!</Button>
       </div>
@@ -51,10 +50,10 @@ class AnswerPopUp extends Component {
   }
 
   render() {
-    const { nextWord } = this.context;
+    const { responseObj } = this.context;
     return (
       <div className="AnswerPopUp">
-        {nextWord.isCorrect ? this.renderCorrect() : this.renderIncorrect()}
+        {responseObj.isCorrect ? this.renderCorrect() : this.renderIncorrect()}
       </div>
     );
   }

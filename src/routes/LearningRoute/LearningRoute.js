@@ -45,7 +45,9 @@ class LearningRoute extends Component {
   handleGuessSubmit = ev => {
     ev.preventDefault();
 
-    const prevWord = this.context.nextWord.original;
+    const { nextWord } = this.context;
+
+    this.context.setPrev(nextWord.original);
 
     const guess = this.state.guess.toLowerCase();
     this.context.setGuess(guess);
@@ -62,6 +64,7 @@ class LearningRoute extends Component {
   };
 
   handleNext() {
+    LanguageApiService.getHead();
     this.setState({ submitted: false });
   }
 
@@ -96,7 +99,7 @@ class LearningRoute extends Component {
       <section>
         {this.renderScores()}
 
-        {this.state.submitted && <AnswerPopUp handleNext={this.handleNext} />}
+        {this.state.submitted && <AnswerPopUp handleNext={this.handleNext} guess={this.state.guess} />}
 
         <div className="Learning__Flashcard">{this.renderFlashcard()}</div>
         <form className="Learning__Form" onSubmit={this.handleGuessSubmit}>
