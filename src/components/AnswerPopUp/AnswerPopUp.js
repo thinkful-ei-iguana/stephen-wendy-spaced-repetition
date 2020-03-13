@@ -32,7 +32,6 @@ class AnswerPopUp extends Component {
   renderIncorrect() {
     const { nextWord, responseObj } = this.context;
 
-    console.log(responseObj);
     return (
       <div className="AnswerPopUp__incorrect">
         <h3 className="AnswerPopUp__subtitle">
