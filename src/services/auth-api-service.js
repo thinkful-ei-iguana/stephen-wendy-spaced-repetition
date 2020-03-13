@@ -22,7 +22,10 @@ const AuthApiService = {
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({
+        username,
+        password
+      }),
     })
       .then(res =>
         (!res.ok)

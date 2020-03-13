@@ -24,7 +24,7 @@ class AnswerPopUp extends Component {
 
         <p className="DisplayScore">Your total score is: {responseObj.totalScore}</p>
 
-        <Button className="AnswerPopUp__button" onClick={() => this.props.handleNext}>Try another word!</Button>
+        <Button className="AnswerPopUp__button" onClick={() => this.props.handleNext()}>Try another word!</Button>
       </div>
     );
   }
@@ -32,6 +32,7 @@ class AnswerPopUp extends Component {
   renderIncorrect() {
     const { nextWord, responseObj } = this.context;
 
+    console.log(responseObj);
     return (
       <div className="AnswerPopUp__incorrect">
         <h3 className="AnswerPopUp__subtitle">
@@ -39,12 +40,12 @@ class AnswerPopUp extends Component {
         </h3>
 
         <p className="AnswerPopUp__text">
-          The correct translation for {nextWord.nextWord} is {responseObj.translation} and you chose {this.props.guess}.
+          The correct translation for {nextWord.nextWord} is {responseObj.answer} and you chose {this.props.guess}.
         </p>
 
-        <p className="AnswerPopUp__score">Your total score is: {responseObj.totalScore}</p>
+        <p className="DisplayScore">Your total score is: {responseObj.totalScore}</p>
 
-        <Button>Next word!</Button>
+        <Button onClick={() => this.props.handleNext()}>Next word!</Button>
       </div>
     );
   }

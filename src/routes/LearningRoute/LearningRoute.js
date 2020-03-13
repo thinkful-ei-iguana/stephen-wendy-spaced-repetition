@@ -45,10 +45,6 @@ class LearningRoute extends Component {
   handleGuessSubmit = ev => {
     ev.preventDefault();
 
-    const { nextWord } = this.context;
-
-    this.context.setPrev(nextWord.original);
-
     const guess = this.state.guess.toLowerCase();
     this.context.setGuess(guess);
 
@@ -63,9 +59,15 @@ class LearningRoute extends Component {
     });
   };
 
-  handleNext() {
-    LanguageApiService.getHead();
-    this.setState({ submitted: false });
+  handleNext = () => {
+    this.setState({
+      submitted: false,
+      guess: ""
+    });
+
+    LanguageApiService.getHead()
+      .then(this.context.setNext)
+      .catch(this.context.setError);
   }
 
   renderScores() {
@@ -90,8 +92,6 @@ class LearningRoute extends Component {
     );
   }
 
-  renderResults() {}
-
   render() {
     const { error } = this.state;
 
@@ -112,6 +112,7 @@ class LearningRoute extends Component {
             id="learn-guess-input"
             type="text"
             name="guess"
+            value={this.state.guess}
             className="Learning__guess-input"
             onChange={ev => this.handleGuess(ev)}
             required

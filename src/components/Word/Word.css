@@ -1,0 +1,24 @@
+li {
+  list-style: none;
+}
+
+.Word__word-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  grid-auto-rows: minmax(20px, auto);
+  font-size: 14px;
+}
+
+@media (min-width: 425px) {
+  .Word__word-container {
+    font-size: 18px;
+    grid-gap: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .Word__word-container {
+    grid-gap: 100px;
+  }
+}

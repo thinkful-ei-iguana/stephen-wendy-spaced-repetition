@@ -53,11 +53,11 @@ describe(`User story: User's dashboard`, function() {
     cy.wait("@languageRequest");
     cy.fixture("language.json").then(({ words }) => {
       words.forEach((word, idx) => {
-        cy.get("li").should("include", word.original);
+        cy.get("li").should("contain", word.original);
 
-        cy.get("li").should("include", word.correct_count);
+        cy.get("li").should("contain", word.correct_count);
 
-        cy.get("li").should("include", word.incorrect_count);
+        cy.get("li").should("contain", word.incorrect_count);
       });
     });
   });

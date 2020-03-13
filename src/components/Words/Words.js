@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import WordContext from "../../contexts/WordContext";
+import Word from "../../components/Word/Word";
 
 class Words extends Component {
   static contextType = WordContext;
 
   render() {
     const { words } = this.props;
-
     return (
       <>
         <ul>
-          {words.map((word, idx) => (
-            <li key={idx}>
-              <h4 className="Word_word">{word.original}</h4>
-
-              <div className="Correct_correct">{word.correct_count}</div>
-
-              <div className="Incorrect_incorrect">{word.incorrect_count}</div>
-            </li>
+          {words.map(word => (
+            <Word
+              key={word.id}
+              word={word.original}
+              translation={word.translation}
+              correct={word.correct_count}
+              incorrect={word.incorrect_count}
+            />
           ))}
         </ul>
       </>
