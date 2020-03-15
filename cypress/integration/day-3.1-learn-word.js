@@ -31,9 +31,19 @@ describe(`User story: Presented with word`, function() {
     cy.fixture("language-head.json").then(languageHeadFixture => {
       cy.get("section").within($section => {
         cy.get("div.Learning__Flashcard").should(
-          "have.text",
+          "contain",
           languageHeadFixture.nextWord
         );
+
+        // cy.get("div.Learning__Flashcard").should(
+        //   "contain",
+        //   "Correct:" + languageHeadFixture.wordCorrectCount
+        // );
+
+        // cy.get("div.Learning__Flashcard").should(
+        //   "contain",
+        //   "Incorrect:" + languageHeadFixture.wordInCorrectCount
+        // );
       });
     });
   });
@@ -67,7 +77,7 @@ describe(`User story: Presented with word`, function() {
         "have.text",
         `Total Score: ${languageHeadFixture.totalScore}`
       );
-      cy.get("div.Learning__score").within($main => {
+      cy.get("div.Flashcard__score").within($main => {
         cy.get("h4").should(
           "contain",
           `Correct: ${languageHeadFixture.wordCorrectCount}`,

@@ -13,7 +13,9 @@ const WordContext = React.createContext({
   setLanguage: () => {},
   setResponseObj: () => {},
   setWords: () => {},
-  setGuess: () => {}
+  setGuess: () => {},
+  clearGuess: () => {},
+  updateScore: () => {}
 });
 
 export default WordContext;
@@ -31,8 +33,7 @@ export class WordProvider extends Component {
       wordIncorrectCount: 0,
       answer: "",
       isCorrect: false,
-      guess: "",
-      setGuess: () => {}
+      guess: ""
     },
     error: null
   };
@@ -59,9 +60,11 @@ export class WordProvider extends Component {
   setGuess = guess => {
     this.setState({ guess });
   };
-
-  setPrev = (word) => {
-    this.setState({ prevWord: word });
+  clearGuess = () => {
+    this.setState({ guess: "" });
+  };
+  updateScore = nextWord => {
+    this.setState({ nextWord });
   };
 
   render() {
@@ -78,8 +81,9 @@ export class WordProvider extends Component {
       setResponseObj: this.setResponseObj,
       setLanguage: this.setLanguage,
       setWords: this.setWords,
-      setGuess: this.setGuess
-      // setPrev: this.setPrev
+      setGuess: this.setGuess,
+      clearGuess: this.clearGuess,
+      updateScore: this.updateScore
     };
 
     return (

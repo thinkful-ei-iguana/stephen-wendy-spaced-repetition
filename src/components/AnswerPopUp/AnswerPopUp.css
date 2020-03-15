@@ -1,16 +1,27 @@
-.AnswerPopUp {
+/* .AnswerPopUp {
   position: fixed;
   top: 75px;
   z-index: 2;
   text-align: center;
   background-color: white;
-  border: 1px solid rgb(0,0,0);
+  border: 1px solid rgb(0, 0, 0);
   width: 350px;
   padding: 20px;
+}
+
+.AnswerPopUp__text {
+  line-height: 1.5px;
+}
+.correction-emphasis {
+  font-weight: 800;
+  font-size: 22px;
+  color: #41704c;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 @media (min-width: 768px) {
   .AnswerPopUp {
     top: 250px;
   }
-}
+} */

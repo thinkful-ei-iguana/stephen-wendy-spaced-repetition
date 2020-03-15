@@ -51,13 +51,12 @@ describe(`User story: User's dashboard`, function() {
     cy.contains("View My Words").click();
 
     cy.wait("@languageRequest");
+
     cy.fixture("language.json").then(({ words }) => {
-      words.forEach((word, idx) => {
-        cy.get("li").should("include", word.original);
-
-        cy.get("li").should("include", word.correct_count);
-
-        cy.get("li").should("include", word.incorrect_count);
+      cy.get("main section").within($section => {
+        cy.get("div").should("contain", "Words to practice");
+        cy.get("div").should("contain", "# Correct");
+        cy.get("div").should("contain", "# Incorrect");
       });
     });
   });
