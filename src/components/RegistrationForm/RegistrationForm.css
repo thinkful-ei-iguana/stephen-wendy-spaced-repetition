@@ -30,18 +30,14 @@
   color: #ce253c;
 }
 .red-input:focus {
-  background-color: #ce253c;
-  color: white;
-  opacity: 50%;
+  background-color: #ce253c69;
+  color: black;
 }
 .white-input:focus {
   background-color: whitesmoke;
-  color: #41704c;
 }
 .green-input:focus {
-  background-color: #41704c;
-  color: white;
-  opacity: 50%;
+  background-color: #41704c75;
 }
 
 @media (min-width: 425px) {

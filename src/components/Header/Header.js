@@ -14,8 +14,11 @@ class Header extends Component {
   renderLogoutLink() {
     return (
       <div className="Header__logged-in">
-        <span className="user-name" aria-label={this.context.user.name}>
-          {this.context.user.name}
+        <span
+          className="user-name"
+          aria-label={`Welcome, ${this.context.user.name}`}
+        >
+          Welcome, {this.context.user.name}!
         </span>
         <nav className="navigation">
           <Link

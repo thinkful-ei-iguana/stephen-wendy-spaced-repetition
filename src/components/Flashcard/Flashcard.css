@@ -1,0 +1,49 @@
+.Flashcard__response {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.response__header {
+  text-align: center;
+}
+.Flashcard__score {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+.Flashcard__word {
+  font-size: 32px;
+  letter-spacing: 5px;
+}
+.correction-emphasis {
+  font-weight: 800;
+  font-size: 22px;
+  color: #41704c;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.incorrect-guess {
+  text-decoration: underline;
+  color: #ce253c;
+}
+.response-score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50vw;
+}
+.icon {
+  padding: 1px;
+}
+
+@media (min-width: 1024px) {
+  .response-score {
+    width: 20vw;
+  }
+}
+@media (min-width: 1440px) {
+  .Flashcard__score {
+    width: 60vw;
+  }
+}
