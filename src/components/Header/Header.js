@@ -57,11 +57,11 @@ class Header extends Component {
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
-          <h1 className="Header__App-title">
-            <Link to="/" className="links" aria-label="Link to dashboard">
+          <Link to="/" className="links" aria-label="Link to dashboard">
+            <h1 className="Header__App-title">
               <span className="spaced">Spaced</span> box
-            </Link>
-          </h1>
+            </h1>
+          </Link>
         </header>
       </>
     );

@@ -3,7 +3,7 @@
   text-transform: uppercase;
   letter-spacing: 0.4em;
   padding: 100px 0;
-  background-image: linear-gradient(
+  background: linear-gradient(
     90deg,
     #41704c,
     #41704c,
@@ -20,8 +20,7 @@
     #41704c
   );
   background-size: 300%;
-  animation: flag 1s ease-in;
-  animation-iteration-count: initial;
+  animation: flag 1.5s ease-in 2 alternate forwards;
 }
 
 @keyframes flag {
@@ -38,11 +37,12 @@
   text-align: center;
   letter-spacing: 1.4em;
 }
+
 .links {
   color: white;
-  opacity: 100%;
-  animation: text 3s ease-in;
-  animation-iteration-count: initial;
+  text-decoration: none;
+  animation: text 3s ease-in forwards;
+  z-index: 1;
 }
 .user-name {
   padding: 0px 20px;
@@ -52,9 +52,7 @@
   0% {
     opacity: 0%;
   }
-  50% {
-    opacity: 50%;
-  }
+
   100% {
     opacity: 100%;
   }
@@ -62,11 +60,18 @@
 
 .spaced {
   text-align: center;
-  letter-spacing: 1.3em;
+  margin: 10px;
+  animation: space 1.5s ease-in forwards;
 }
-.links,
-.user-links {
-  text-decoration: none;
+
+@keyframes space {
+  0% {
+    letter-spacing: -1em;
+  }
+
+  100% {
+    letter-spacing: 1.1em;
+  }
 }
 
 .navigation {
